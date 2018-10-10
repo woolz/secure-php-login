@@ -59,17 +59,17 @@ class Register extends db_connect{
                             $stmt->bindParam(':password', Password::encrypt_password($password));
                             $stmt->execute();
                             $result['status'] = true;
-                            $result['message'] = "Sua conta foi criada com sucesso.";
+                            $result['message'] = "Your account was successfully created.";
 
                         } else {
-                            $result['status'] = false;
-                            $result['message'] = "As senhas não são iguais";
+                            $result['status'] = $check_pw['status'];
+                            $result['message'] = $check_pw['message'];
                         }
 
 
                     } else {
                         $result['status'] = false;
-                        $result['message'] = "O email já está sendo utilizado por outro usuário";
+                        $result['message'] = "Email is already in use...";
                     }
 
 
@@ -77,12 +77,12 @@ class Register extends db_connect{
 
                 } else {
                     $result['status'] = false;
-                    $result['message'] = "O nome de usuário já está em uso.";
+                    $result['message'] = "Username is already in use...";
                 }
 
             } else {
                 $result['status'] = false;
-                $result['message'] = "Por favor, não deixe campos em branco.";
+                $result['message'] = "Do not leave fields blank.";
             }
 
         } catch (\PDOException $e) {

@@ -1,6 +1,6 @@
 <?php
 
-namespace MeuPetCubatao;
+namespace SecurePHPLogin;
 
 
 class Password extends db_connect{

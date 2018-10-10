@@ -1,11 +1,11 @@
 <?php
-    //Paramêtros do banco de dados
-    $host = "localhost"; // Servidor
-    $username = "root"; // Nome do usuário MYSQL
-    $password = "vertrigo"; // Senha do usuário MYSQL
-    $db_name = "phplogin"; // Nome do Banco de Dados
+    // **__ Database params __**
+    $host = "localhost"; // Host
+    $username = "root"; // Database User
+    $password = "root"; // Database Password
+    $db_name = "phplogin"; // Database Name
 
-    $tbl_prefix = "pl_"; //Prefixo da Tabela no Banco de Dados
+    $tbl_prefix = "pl_"; //Database prefix
 
     $tbl_users = $tbl_prefix."users";
     $tbl_tokens = $tbl_prefix."tokens";

@@ -46,9 +46,9 @@ class Register extends db_connect{
 
             if (isset($username) && isset($email) && isset($password) & isset($re_password)) {
 
-                if (check_if_username_exists($username) == false) {
+                if ($this->check_if_username_exists($username) == false) {
                     
-                    if (check_if_email_exists($email) == false) {
+                    if ($this->check_if_email_exists($email) == false) {
                         $check_pw = Password::password_is_valid($password, $re_password);
                         if ($check_pw['status'] == true) {
                             $id = uniqid();

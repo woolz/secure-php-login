@@ -1,7 +1,7 @@
 <?php
 namespace SecurePHPLogin;
 
-class pagination extends sys_info {
+class Pagination extends sys_info {
 
 
     private $pages;

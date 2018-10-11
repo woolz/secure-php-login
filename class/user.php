@@ -39,6 +39,37 @@ class User extends db_connect{
         }
 
     }
+    
+    public static function change_password(string $uid, string $new_password, string $re_new_password): array {
+        try {
+            $db = new db_connect;
+            $tbl_users = $db->tbl_users;
+
+            $check_pw =  Password::password_is_valid($new_password, $re_new_password);
+
+            if ($check_pw['status'] == true) {
+
+                $stmt->conn->prepare("UPDATE FROM $tbl_users SET password = :new_password WHERE id = :id");
+                $stmt->bindParam(':id', $uid);
+                $stmt->bindParam(':new_password', Password::encrypt_password($new_password));
+                $stmt->execute();
+                $result['status'] = true;
+                $result['message'] = "Password successful changed!";
+
+
+
+            } else {
+                $result['status'] = $check_pw['status'];
+                $result['message'] = $check_pw['message'];
+            }
+
+        } catch (\PDOException $e) {
+            $result['status'] = false;
+            $result['message'] = "Error: " . $e->getMessage();
+        }
+
+        return $result;
+    }
 
     public static function change_user_email(string $uid, string $new_email) {
         try {
@@ -73,10 +104,6 @@ class User extends db_connect{
         }
         return $result;
     }
-
-
-
-
 
 
 
